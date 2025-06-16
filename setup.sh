@@ -1,30 +1,21 @@
-# setup-mark2docs.sh
 #!/bin/bash
-# Mark2Docs Google Cloud Setup Script
-# Run directly from Google Cloud Shell:
-# curl -s https://raw.githubusercontent.com/petertamai/Mark2DocsGoogleCloudSetup/main/setup.sh | bash
-
 set -e
 
-# Colors for output
 RED='\033[0;31m'
 GREEN='\033[0;32m'
 YELLOW='\033[1;33m'
 BLUE='\033[0;34m'
-NC='\033[0m' # No Color
+NC='\033[0m'
 
-# Configuration
 DEFAULT_PROJECT_ID="mark2docs-$(date +%s)"
 DEFAULT_REDIRECT_URI="http://localhost:3000/api/google/callback"
 
 echo -e "${BLUE}🚀 Mark2Docs Google Cloud Setup${NC}"
 echo "=================================="
 
-# Get user input for project ID
 read -p "Enter project ID (default: $DEFAULT_PROJECT_ID): " PROJECT_ID
 PROJECT_ID=${PROJECT_ID:-$DEFAULT_PROJECT_ID}
 
-# Get user input for redirect URI
 read -p "Enter redirect URI (default: $DEFAULT_REDIRECT_URI): " REDIRECT_URI
 REDIRECT_URI=${REDIRECT_URI:-$DEFAULT_REDIRECT_URI}
 
@@ -33,7 +24,6 @@ echo "   Project ID: $PROJECT_ID"
 echo "   Redirect URI: $REDIRECT_URI"
 echo ""
 
-# Confirm before proceeding
 read -p "Continue with setup? (y/N): " -n 1 -r
 echo
 if [[ ! $REPLY =~ ^[Yy]$ ]]; then
